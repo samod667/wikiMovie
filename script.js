@@ -9,14 +9,12 @@ const userInput = document.getElementById("search-input");
 const resultUI = document.querySelector(".movie-results-container")
 
 
-
 let resultArr = [];
 let movieID;
 
-// EVENT LISTENER
+// EVENT LISTENER ON SUBMIT
 
 submitBtn.addEventListener('click', generateSearch)
-
 
 
 // FUNCTIONS
@@ -31,22 +29,25 @@ function clearUI() {
 function onTitleClicked(id) {
     movieID = id
     displayMovieResults()
-
 }
 
 async function generateSearch() {
     resultArr = []
+    try {
+        const result = await fetch(`${baseURL}${search}${userInput.value}${apiKey}`)
+        const data = await result.json();
 
-    const result = await fetch(`${baseURL}${search}${userInput.value}${apiKey}`)
-    const data = await result.json();
+        //push data in array
+        data.Search.forEach(element => {
+            resultArr.push(element)
+        })
+        //console.log(resultArr)
 
-    //push data in array
-    data.Search.forEach(element => {
-        resultArr.push(element)
-    })
-    console.log(resultArr)
+        displayResults()
+    } catch (error) {
+        alert("Can't find the movie you searched for :(")
+    }
 
-    displayResults()
 }
 
 function displayResults() {
@@ -76,7 +77,7 @@ async function displayMovieResults() {
     clearUI()
     const result = await fetch(`${baseURL}${id}${movieID}${apiKey}`)
     const data = await result.json()
-    console.log(data)
+    //console.log(data)
 
 
     const markup = `

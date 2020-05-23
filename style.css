@@ -17,7 +17,11 @@ h1 {
     text-align: center;
 }
 
-.form-control {
+.container {
+    /*border-bottom: 1px solid black;*/
+}
+
+.form-control1 {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -27,7 +31,7 @@ h1 {
 
 .movie-results-container {
     margin-top: 2rem;
-    display:flex;
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
@@ -53,7 +57,7 @@ h1 {
 }
 
 .results li {
-   margin-bottom: 3px;
+    margin-bottom: 3px;
 }
 
 .results button {
@@ -69,8 +73,10 @@ h1 {
     align-items: flex-start;
     width: 100%;
     padding-left: 50px;
-    margin-top: 4rem;
+    margin-top: 1.5rem;
     flex-flow: wrap;
+    padding-top: 5px;
+    border-top: 1px black solid;
 }
 
 .movie-result img {
@@ -81,28 +87,29 @@ h1 {
 }
 
 .movie-result h1 {
-    width: 100%
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 #ratings {
     display: block;
 }
 
-.movie-result li{
+.movie-result li {
     padding: 5px 0 5px 0;
 }
 
-.form-control label {
+.form-control1 label {
     margin-bottom: 5px;
 }
 
-.form-control input {
+.form-control1 input {
     margin-bottom: 5px;
     padding: 3px 0;
     border-radius: 5px;
 }
 
-.form-control button {
+.form-control1 button {
     margin-bottom: 5px;
 }
 
