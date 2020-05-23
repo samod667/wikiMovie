@@ -56,6 +56,12 @@ h1 {
    margin-bottom: 3px;
 }
 
+.results button {
+    width: 20px;
+    height: 5px;
+    display: flex;
+}
+
 .movie-result {
     display: flex;
     flex-direction: column;
@@ -82,8 +88,8 @@ h1 {
     display: block;
 }
 
-.movie-result ul{
-
+.movie-result li{
+    padding: 5px 0 5px 0;
 }
 
 .form-control label {

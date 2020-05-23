@@ -7,7 +7,7 @@ const id = "?i=";
 const submitBtn = document.getElementById("submit-btn");
 const userInput = document.getElementById("search-input");
 const resultUI = document.querySelector(".movie-results-container")
-const moreDetails = document.getElementById("more-details")
+
 
 
 let resultArr = [];
@@ -16,9 +16,7 @@ let movieID;
 // EVENT LISTENER
 
 submitBtn.addEventListener('click', generateSearch)
-moreDetails.addEventListener('click', e => {
-    catchID()
-} )
+
 
 
 // FUNCTIONS
@@ -30,9 +28,11 @@ function clearUI() {
     resultUI.innerHTML = ''
 }
 
-// function catchID(obj) {
-//     movieID = obj.imdbID
-// }
+function onTitleClicked(id) {
+    movieID = id
+    displayMovieResults()
+
+}
 
 async function generateSearch() {
     resultArr = []
@@ -53,23 +53,67 @@ function displayResults() {
     clearUI()
 
     resultArr.forEach(movie => {
-        movieID = movie.imdbID
         const markup = `
        
         <div class="results">
             <img src="${movie.Poster}" alt="Movie Poster">
             <ul>
-                <a href="#"><li id="more-details">${movie.Title}</li></a>
+                <a href="#" id="more-details" onclick="onTitleClicked('${movie.imdbID}')"><li>${movie.Title}</li></a>
                 <li>${capitalizeFirstLetter(movie.Type)}</li>
                 <li>${movie.Year}</li>
                 <li>${movie.imdbID}</li>
             </ul>
             </div>
-         
+            
     `
         resultUI.insertAdjacentHTML('afterbegin', markup)
+
     })
+    //moviePage()
 }
+
+async function displayMovieResults() {
+    clearUI()
+    const result = await fetch(`${baseURL}${id}${movieID}${apiKey}`)
+    const data = await result.json()
+    console.log(data)
+
+
+    const markup = `
+        <div class="movie-result">
+            <h1>${data.Title}</h1>
+            <img src="${data.Poster}" alt="Poster Here">
+
+
+            <ul>
+                <li>Year: ${data.Year}</li>
+                <li>Rated: ${data.Rated}</li>
+                <li>Release Date: ${data.Released}</li>
+                <li>Type: ${capitalizeFirstLetter(data.Type)}</li>
+                <li>Runtime: ${data.Runtime}</li>
+                <li>Genre: ${data.Genre}</li>
+                <li>Director: ${data.Director}</li>
+                <li>Writer: ${data.Writer}</li>
+                <li>Actors: ${data.Actors}</li>
+                <li>Language: ${data.Language}</li>
+                <li>Country: ${data.Country}</li>
+                <li>Awards: ${data.Awards}</li>
+                <li>IMDB Score: ${data.imdbRating}</li>
+                <li>Metacritic Score: ${data.Metascore}</li>
+            </ul>
+            <div id="plot">
+                <h4>${capitalizeFirstLetter(data.Type)} Plot</h4>
+                <p>${data.Plot}</p>
+            </div>
+        </div>
+    </div>
+    `
+    resultUI.insertAdjacentHTML('afterbegin', markup)
+}
+
+
+
+
 
 
 
