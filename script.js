@@ -19,6 +19,11 @@ formEl.addEventListener('submit', e => {
     e.preventDefault();
 
     generateSearch();
+
+    userInput.value = '';
+    userInput.blur()
+
+
 })
 
 //Event listener on head click
@@ -45,6 +50,7 @@ async function generateSearch() {
 
     resultArr = []
     try {
+
         const result = await fetch(`${baseURL}${search}${userInput.value}${apiKey}`)
         const data = await result.json();
 
@@ -53,10 +59,17 @@ async function generateSearch() {
             resultArr.push(element)
         })
         // console.log(resultArr)
-
+        //Remove error msg
+        userInput.classList.remove('form-control', "is-invalid")
+        //Animate main search area up
+        document.getElementById('container').classList.remove('center');
+        document.getElementById('container').classList.add("animate__animated", "animate__slideInUp");
         displayResults()
+
+
     } catch (error) {
-        alert("Can't find the movie you searched for :(")
+        userInput.classList.add('form-control', "is-invalid")
+        // alert("Can't find the movie you searched for :(")
     }
 
 }
