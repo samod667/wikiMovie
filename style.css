@@ -98,7 +98,7 @@ h1 {
     flex-direction: column;
     text-align: center;
     width: 200px;
-    height: 400px;
+    height: 370px;
     border-radius: 8px;
     -webkit-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.45);
     -moz-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.45);
@@ -112,13 +112,15 @@ h1 {
     margin: 10px auto;
 }
 
+.result2 span {
+    margin-top: 5px;
+}
+
 .result2:hover{
     transform: scale(1.1);
 }
 
 #movie-title {
-    margin-top: 10px;
-    margin-bottom: 25px;
     text-align: center;
 }
 
