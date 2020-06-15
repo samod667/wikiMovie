@@ -1,5 +1,5 @@
 {
-  "name": "movie-search-database",
+  "name": "wikiMovie",
   "version": "1.0.0",
   "description": "",
   "main": "script.js",
@@ -11,13 +11,16 @@
     "url": "git+https://github.com/samod667/movie-search-database.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dor Sam",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/samod667/movie-search-database/issues"
   },
   "homepage": "https://github.com/samod667/movie-search-database#readme",
   "dependencies": {
-    "animate.css": "^4.1.0"
+    "animate.css": "^4.1.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "localenvify": "^1.0.1"
   }
 }

@@ -39,7 +39,6 @@ h1 {
     height: 80vh;
 }
 
-
 .form-control1 {
     margin-top: 2rem;
     display: flex;
@@ -196,7 +195,7 @@ tr:nth-child(even) {
     background: rgba(235, 235, 235, 1);
 }
 
-.plot{
+#plot{
     margin-bottom: 10px;
     text-align: center;
     width: 50%;
