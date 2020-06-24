@@ -213,5 +213,11 @@ tr:nth-child(even) {
     display: block;
 }
 
+@media only screen and (min-width: 1200px) {
+    .movie-results-container {
+        width: 70%;
+    }
+}
+
 
 
